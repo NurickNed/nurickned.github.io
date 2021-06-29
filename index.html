@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body{
+            height: 100%;
+        }
+        body{
+            margin: 0;
+        }
+        h1, h2, h3, h4, h5{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-top: 20px;
+        }
+        .hidden{
+            font-size: 18px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            visibility: hidden;
+        }
+        .flex-container{
+            display: flex;
+            justify-content: space-between;
+            flex-flow: wrap;
+        }
+        .container{
+            padding: 0 15px;
+            max-width: 1160px;
+            margin: 0px auto;
+        }
+        .plans{
+            /* flex: 1; */
+            margin-top: 10px;
+            width: 90%;
+            max-width: 500px;
+            /* background: #aaa; */
+        }
+        div.plans img{
+            width: 100%
+        }
+        .inputs{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        input{
+            border: 0;
+            background: #eee;
+            height: 50px;
+            padding: 0px 20px;
+        }
+        button{
+            border: 0;
+            padding: 10px 40px;
+            background: rgb(201, 219, 241);
+            font-weight: 600;
+            color: black;
+            cursor: pointer;
+        }
+        input{
+            margin-bottom: 15px;
+        }
+    </style>
+    <title>Подготовка к тесту по истории</title>
+</head>
+<body>
+
+    <div class="container inputs">
+        <input type="text" placeholder="Введите номера"><br>
+        <button id="prepare">Подготовка</button>
+        <button id="test">Тест </button>
+    </div> 
+
+    <div class="container" id="prepared">
+    </div>
+    
+</body>
+
+<script src="Здания.js"></script>
+
+<script>
+
+    document.querySelector('#prepare').onclick = () => {
+
+        const query = document.querySelector('input').value
+        if (!query) {prepareImages();return}
+
+        if (query.search('-') != -1){
+            arr = query.split('-')
+            if (!arr[0]) prepareImages(parseInt(arr[1]))
+            else prepareImages(parseInt(arr[1]), parseInt(arr[0]))
+
+        } else prepareImages(parseInt(query))
+    }
+    document.querySelector('#test').onclick = () => {
+
+        const query = document.querySelector('input').value
+        if (!query) {testImages();return}
+
+        if (query.search('-') != -1){
+            arr = query.split('-')
+            if (!arr[0]) testImages(parseInt(arr[1]))
+            else testImages(parseInt(arr[1]), parseInt(arr[0]))
+
+        } else testImages(parseInt(query))
+    }
+
+    function prepareImages(end = 197, beginning = 1){
+        let html = '';
+        for(let i = beginning; i <= end; i++){
+            html += `<h2>${i}. ${buildings[i-1]}</h2>
+            <div class="flex-container">
+                <img class="plans" src="./img/${i}/1.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+                <img class="plans" src="./img/${i}/2.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+                <img class="plans" src="./img/${i}/3.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+                <img class="plans" src="./img/${i}/4.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+            </div>`
+        }
+
+        document.querySelector('#prepared').innerHTML = html
+    }
+
+    function testImages(end = 197, beginning = 1){
+        let html = [];
+        for(let i = beginning; i <= end; i++){
+            html.push(`<div class="plans" onClick="showContent(this)">
+            <img src="./img/${i}/${Math.ceil(Math.random()*2)}.jpg" onerror="this.onerror=null; this.src='./img/${i}/1.jpg'"></img>
+            <h2 class="hidden">${i}. ${buildings[i-1]}</h2>
+            </div>`)
+        }
+        html.sort( () => (Math.random() > 0.5) ? 1 : -1 )
+        document.querySelector('#prepared').innerHTML = html.join(' ')
+    }
+    
+    function showContent(el){
+        el.children[1].style.visibility="visible";
+    }
+
+</script>
+</html>
