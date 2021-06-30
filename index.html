@@ -111,7 +111,7 @@
         } else testImages(parseInt(query))
     }
 
-    function prepareImages(end = 197, beginning = 1){
+    function prepareImages(end = 93, beginning = 1){
         let html = '';
         for(let i = beginning; i <= end; i++){
             html += `<h2>${i}. ${buildings[i-1]}</h2>
@@ -120,13 +120,14 @@
                 <img class="plans" src="./img/${i}/2.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
                 <img class="plans" src="./img/${i}/3.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
                 <img class="plans" src="./img/${i}/4.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+                <img class="plans" src="./img/${i}/5.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
             </div>`
         }
 
         document.querySelector('#prepared').innerHTML = html
     }
 
-    function testImages(end = 197, beginning = 1){
+    function testImages(end = 93, beginning = 1){
         let html = [];
         for(let i = beginning; i <= end; i++){
             html.push(`<div class="plans" style="max-height: unset" onClick="showContent(this)">
