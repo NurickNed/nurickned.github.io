@@ -36,6 +36,7 @@
         }
         .plans{
             /* flex: 1; */
+            max-height: 500px;
             margin-top: 10px;
             width: 90%;
             max-width: 500px;
@@ -128,7 +129,7 @@
     function testImages(end = 197, beginning = 1){
         let html = [];
         for(let i = beginning; i <= end; i++){
-            html.push(`<div class="plans" onClick="showContent(this)">
+            html.push(`<div class="plans" style="max-height: unset" onClick="showContent(this)">
             <img src="./img/${i}/${Math.ceil(Math.random()*2)}.jpg" onerror="this.onerror=null; this.src='./img/${i}/1.jpg'"></img>
             <h2 class="hidden">${i}. ${buildings[i-1]}</h2>
             </div>`)
