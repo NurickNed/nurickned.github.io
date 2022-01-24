@@ -82,7 +82,7 @@
     
 </body>
 
-<script src="Здания.js"></script>
+<script src="Здания 1.js"></script>
 
 <script>
 
@@ -111,27 +111,39 @@
         } else testImages(parseInt(query))
     }
 
-    function prepareImages(end = 93, beginning = 1){
+    function prepareImages(end = 55/*93*/, beginning = 1){
         let html = '';
+        // for(let i = beginning; i <= end; i++){
+        //     html += `<h2>${i}. ${buildings[i-1]}</h2>
+        //     <div class="flex-container">
+        //         <img class="plans" src="./img/${i}/1.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+        //         <img class="plans" src="./img/${i}/2.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+        //         <img class="plans" src="./img/${i}/3.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+        //         <img class="plans" src="./img/${i}/4.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+        //         <img class="plans" src="./img/${i}/5.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+        //     </div>`
+        // }
         for(let i = beginning; i <= end; i++){
             html += `<h2>${i}. ${buildings[i-1]}</h2>
             <div class="flex-container">
-                <img class="plans" src="./img/${i}/1.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
-                <img class="plans" src="./img/${i}/2.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
-                <img class="plans" src="./img/${i}/3.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
-                <img class="plans" src="./img/${i}/4.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
-                <img class="plans" src="./img/${i}/5.jpg" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
+                <img class="plans" src="./img1/${i}.png" onerror="this.onerror=null; this.src='./img/default.png'; this.style.width='0';"></img>
             </div>`
         }
 
         document.querySelector('#prepared').innerHTML = html
     }
 
-    function testImages(end = 93, beginning = 1){
+    function testImages(end = 55/*93*/, beginning = 1){
         let html = [];
+        // for(let i = beginning; i <= end; i++){
+        //     html.push(`<div class="plans" style="max-height: unset" onClick="showContent(this)">
+        //     <img src="./img/${i}/${Math.ceil(Math.random()*4)}.jpg" onerror="this.onerror=null; this.src='./img/${i}/1.jpg'"></img>
+        //     <h2 class="hidden">${i}. ${buildings[i-1]}</h2>
+        //     </div>`)
+        // }
         for(let i = beginning; i <= end; i++){
             html.push(`<div class="plans" style="max-height: unset" onClick="showContent(this)">
-            <img src="./img/${i}/${Math.ceil(Math.random()*4)}.jpg" onerror="this.onerror=null; this.src='./img/${i}/1.jpg'"></img>
+            <img src="./img1/${i}.png" onerror="this.onerror=null; this.src='./img1/${i}.png'"></img>
             <h2 class="hidden">${i}. ${buildings[i-1]}</h2>
             </div>`)
         }
