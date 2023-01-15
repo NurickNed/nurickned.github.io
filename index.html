@@ -111,7 +111,7 @@
         } else testImages(parseInt(query))
     }
 
-    function prepareImages(end = 170/*93*/, beginning = 1){
+    function prepareImages(end = 56/*93*/, beginning = 1){
         let html = '';
         for(let i = beginning; i <= end; i++){
             html += `<h2>${i}. ${buildings[i-1]}</h2>
@@ -133,7 +133,7 @@
         document.querySelector('#prepared').innerHTML = html
     }
 
-    function testImages(end = 170/*93*/, beginning = 1){
+    function testImages(end = 56/*93*/, beginning = 1){
         let html = [];
         for(let i = beginning; i <= end; i++){
             html.push(`<div class="plans" style="max-height: unset" onClick="showContent(this)">
